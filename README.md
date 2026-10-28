@@ -1,39 +1,67 @@
-# Olá, eu sou a Alana Queiroz 
+# Alana Queiroz — Caderno de produto
 
-Estudante de Ciência da Computação apaixonada por desenvolvimento e dados. Gosto de transformar problemas complexos em soluções simples, seja construindo interfaces intuitivas ou explorando dados para gerar insights. Estou sempre em busca de novos desafios que unam tecnologia, criatividade e aprendizado contínuo.
+Portfólio pessoal de **Alana Queiroz (Lana)**: estudante de Ciência da Computação na PUCPR e participante da Apple Developer Academy.
 
-## Sobre mim
+> Eu penso, desenho e desenvolvo produtos digitais.
 
-- 🎓 Estudante de Ciência da Computação
-- 💻 Interesses: Desenvolvimento de Software & Ciência de Dados
-- 🎨 Também trabalho com design de interfaces (Figma)
-- 🌱 Sempre aprendendo algo novo
-- 📫 Como me encontrar: alanqroz@gmail.com
+O site é pensado como uma publicação editorial — painéis de cor, tipografia serifada de alto contraste, fotos impressas, post-its e anotações à mão — apresentando quatro projetos: **Auris**, **Zip It**, **Sky Bound** e **AEGIS**, cada um com seu estudo de caso.
 
-## Tecnologias & Ferramentas
+## Rodando localmente
 
-**Linguagens de Programação**
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Java](https://img.shields.io/badge/Java-007396?style=for-the-badge&logo=java&logoColor=white)
-![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white)
-![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
+```bash
+npm install
+npm run dev        # http://localhost:5173
+npm run build      # checa tipos e gera dist/
+npm run preview    # serve o build
+```
 
-**Design & Ferramentas**
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+## Onde editar o conteúdo
 
-##  Projetos em Destaque
+| O quê | Arquivo |
+|---|---|
+| Textos dos projetos e estudos de caso | `src/content/projects.ts` |
+| Sobre mim, formação, habilidades, links | `src/content/site.ts` |
+| Cores, fontes, espaçamentos, animações | `src/styles/tokens.css` |
 
+**Notas de edição.** Nos estudos de caso, todo capítulo com `pending` aparece no site como uma nota tracejada "A preencher". São os lugares onde ainda falta informação real (por exemplo, a participação no Auris). Quando escrever o texto, coloque em `body` e apague o `pending`.
 
-## Estatísticas do GitHub
+**Foto no "Sobre".** Coloque a imagem em `public/images/` e preencha `about.photo` em `src/content/site.ts`.
 
+## Imagens
+
+Os originais ficam em `assets-src/`. Para gerar as versões otimizadas (WebP) em `public/images/`:
+
+```bash
+npm run images     # converte e redimensiona
+npm run og         # gera a imagem de compartilhamento (public/og-image.png)
+```
+
+Origem das imagens: capturas publicadas pela própria Alana na App Store (Zip It e Sky Bound), assets dos repositórios dos apps e materiais das páginas de cada projeto no Notion (em `assets-src/notion/`, já reduzidos). Nenhum banco de imagens foi usado.
+
+## Estrutura
+
+```
+src/
+├── content/      # dados: projetos, textos, links
+├── components/   # Paper (post-it, polaroid, iPhone, etiquetas), links, header, footer, figuras
+├── sections/     # Capa, Trabalhos, Sobre, Formação, Contato
+├── pages/        # Estudo de caso
+├── lib/          # roteador (?caso=slug) e animação de entrada
+└── styles/       # tokens, base, componentes, seções, estudo de caso
+```
+
+As páginas de estudo de caso usam a URL `?caso=auris`, `?caso=zip-it` etc. Isso funciona em qualquer hospedagem estática (GitHub Pages incluído) sem configurar redirecionamentos.
+
+## Acessibilidade
+
+HTML semântico, hierarquia de títulos, link "pular para o conteúdo", foco visível, navegação por teclado (o menu móvel fecha com Esc), textos alternativos nas imagens informativas, contraste revisado contra WCAG AA e animações desligadas quando o sistema pede redução de movimento.
+
+## Créditos
+
+- Tipografia: [Bodoni Moda](https://fonts.google.com/specimen/Bodoni+Moda), [Inter](https://fonts.google.com/specimen/Inter) e [Caveat](https://fonts.google.com/specimen/Caveat), todas sob SIL Open Font License, servidas localmente via [Fontsource](https://fontsource.org).
+- Construído com React, TypeScript e Vite.
 
 ## Contato
 
--  Email: [alanqroz@gmail.com](mailto:alanqroz@gmail.com)
--  LinkedIn: [alanaqroz](https://linkedin.com/in/alanaqroz)
--  GitHub: [@alanaqroz](https://github.com/alanaqroz)
-
----
- From [Alana Queiroz](https://github.com/alanaqroz)
+- [GitHub](https://github.com/alanaqroz)
+- [LinkedIn](https://www.linkedin.com/in/alanaqroz/)
