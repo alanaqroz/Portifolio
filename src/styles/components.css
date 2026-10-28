@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Componentes reutilizáveis
+   ========================================================================== */
+
+/* — Anotação manuscrita — */
+.hand-note {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1rem + 0.5vw, 1.45rem);
+  line-height: 1.15;
+  color: var(--color-rust-text);
+  transform: rotate(var(--rotate, 0deg));
+  transform-origin: left center;
+}
+
+/* — Fita adesiva — */
+.tape {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 84px;
+  height: 24px;
+  translate: -50% 0;
+  rotate: -4deg;
+  background: var(--color-tape);
+  box-shadow: 0 1px 2px rgba(104, 74, 61, 0.12);
+  clip-path: polygon(3% 0, 97% 4%, 100% 50%, 96% 100%, 2% 96%, 0 50%);
+  z-index: 2;
+}
+
+/* — Post-it — */
+.sticky-note {
+  position: relative;
+  width: max-content;
+  max-width: 15rem;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  background: var(--color-cream);
+  color: var(--color-coffee);
+  box-shadow: var(--shadow-paper);
+  transform: rotate(var(--rotate, 0deg));
+}
+
+.sticky-note p {
+  font-family: var(--font-hand);
+  font-weight: 500;
+  font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.4rem);
+  line-height: 1.15;
+}
+
+/* — Foto impressa (polaroid) — */
+.photo-print {
+  position: relative;
+  margin: 0;
+  padding: 0.55rem 0.55rem 0;
+  background: #fffdf8;
+  box-shadow: var(--shadow-paper);
+  transform: rotate(var(--rotate, 0deg));
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+.photo-print img {
+  width: 100%;
+  background: var(--color-sky-soft);
+}
+
+.photo-print figcaption {
+  padding: 0.5rem 0.2rem 0.65rem;
+  font-family: var(--font-hand);
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1.1;
+  color: var(--color-coffee);
+}
+
+.photo-print:not(:has(figcaption)) {
+  padding-bottom: 1.6rem;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .photo-print:hover {
+    transform: rotate(calc(var(--rotate, 0deg) * 0.3)) translateY(-6px);
+    box-shadow: var(--shadow-lift);
+  }
+}
+
+/* — Moldura de iPhone — */
+.device {
+  --device-w: 15rem;
+  position: relative;
+  width: var(--device-w);
+  margin: 0;
+  padding: 0.55rem;
+  border-radius: calc(var(--device-w) * 0.16);
+  background: #22303a;
+  box-shadow:
+    inset 0 0 0 1.5px #4b5d68,
+    var(--shadow-device);
+  transform: rotate(var(--rotate, 0deg));
+}
+
+.device__screen {
+  position: relative;
+  aspect-ratio: 402 / 874;
+  overflow: hidden;
+  border-radius: calc(var(--device-w) * 0.13);
+  background: var(--color-sky-soft);
+}
+
+.device__screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.device__island {
+  position: absolute;
+  top: 3.2%;
+  left: 50%;
+  width: 32%;
+  height: 3.6%;
+  translate: -50% 0;
+  border-radius: 999px;
+  background: #11181d;
+  z-index: 1;
+}
+
+.device--small {
+  --device-w: 9.5rem;
+}
+
+/* Placeholder intencional: visor de câmera desenhado */
+.viewfinder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 46%, rgba(255, 245, 207, 0.9), transparent 55%),
+    repeating-linear-gradient(135deg, rgba(70, 93, 104, 0.06) 0 10px, transparent 10px 20px),
+    var(--color-sky-soft);
+}
+
+.viewfinder__corners {
+  position: absolute;
+  inset: 26% 16%;
+  --c: var(--color-ink-strong);
+  background:
+    linear-gradient(var(--c), var(--c)) top left / 22% 2px,
+    linear-gradient(var(--c), var(--c)) top left / 2px 22%,
+    linear-gradient(var(--c), var(--c)) top right / 22% 2px,
+    linear-gradient(var(--c), var(--c)) top right / 2px 22%,
+    linear-gradient(var(--c), var(--c)) bottom left / 22% 2px,
+    linear-gradient(var(--c), var(--c)) bottom left / 2px 22%,
+    linear-gradient(var(--c), var(--c)) bottom right / 22% 2px,
+    linear-gradient(var(--c), var(--c)) bottom right / 2px 22%;
+  background-repeat: no-repeat;
+}
+
+.viewfinder__label {
+  position: absolute;
+  bottom: 12%;
+  left: 10%;
+  right: 10%;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-weight: 500;
+  font-size: calc(var(--device-w) * 0.085);
+  line-height: 1.1;
+  color: var(--color-ink-strong);
+}
+
+/* — Etiquetas — */
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+}
+
+.tag {
+  padding: 0.28rem 0.6rem;
+  border: 1px solid currentColor;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 253, 248, 0.5);
+  font-size: var(--step--2);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--ink, var(--heading));
+}
+
+/* — Nota de edição (conteúdo a preencher) — */
+.editor-note {
+  margin-top: var(--space-5);
+  padding: var(--space-4) var(--space-5);
+  border: 1.5px dashed var(--color-rust-text);
+  background: repeating-linear-gradient(-45deg, rgba(185, 92, 53, 0.05) 0 8px, transparent 8px 16px), var(--color-paper);
+  color: var(--color-coffee);
+  font-size: var(--step--1);
+}
+
+.editor-note__title {
+  margin-bottom: var(--space-1);
+  font-family: var(--font-hand);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--color-rust-text);
+}
+
+/* — Botões e links — */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
+}
+
+.btn--solid {
+  padding: 0.7rem 1.2rem;
+  border: 1.5px solid var(--color-ink-strong);
+  background: var(--color-ink-strong);
+  color: var(--color-paper);
+}
+
+.btn--solid:hover {
+  background: var(--color-coffee);
+  border-color: var(--color-coffee);
+}
+
+.btn--outline {
+  padding: 0.65rem 1.1rem;
+  border: 1.5px solid currentColor;
+  color: var(--ink, var(--color-ink-strong));
+}
+
+.btn--outline:hover {
+  background: var(--color-ink-strong);
+  border-color: var(--color-ink-strong);
+  color: var(--color-paper);
+}
+
+.btn--text {
+  padding: 0.5rem 0;
+  color: var(--ink, var(--color-ink-strong));
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.3em;
+}
+
+.btn--text:hover {
+  color: var(--color-rust-text);
+}
+
+.arrow {
+  flex: none;
+  transition: translate var(--duration-base) var(--ease-out);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn:hover .arrow {
+    translate: 4px 0;
+  }
+}
+
+/* Pequeno ponto de cor usado em rótulos */
+.dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--color-rust);
+}
