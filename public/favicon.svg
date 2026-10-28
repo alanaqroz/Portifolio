@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#FFF0B3"/>
+  <rect x="8" y="8" width="48" height="48" rx="6" fill="#B6CFD8" transform="rotate(-4 32 32)"/>
+  <text x="32" y="45" text-anchor="middle" font-family="'Bodoni 72', 'Didot', 'Bodoni MT', Georgia, serif" font-size="36" font-style="italic" font-weight="700" fill="#465D68">a</text>
+  <circle cx="47" cy="17" r="4" fill="#B95C35"/>
+</svg>
