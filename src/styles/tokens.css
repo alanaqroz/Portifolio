@@ -1,0 +1,108 @@
+/* ==========================================================================
+   Design tokens — Caderno de produto de Alana Queiroz
+   Todas as decisões visuais partem daqui. Mude um valor e o site inteiro acompanha.
+   ========================================================================== */
+
+:root {
+  /* — Paleta base (referência editorial) — */
+  --color-butter: #fff0b3;      /* amarelo-manteiga: fundo principal */
+  --color-sky: #b6cfd8;         /* azul pastel acinzentado: painéis */
+  --color-paper: #f7f5ef;       /* branco quente: respiro, folhas de papel */
+  --color-cream: #fff5cf;       /* amarelo-creme: notas, destaques suaves */
+  --color-coffee: #684a3d;      /* marrom-café: texto corrido */
+  --color-ink: #465d68;         /* azul profundo: títulos e leitura */
+  --color-rust: #b95c35;        /* laranja queimado: detalhes pontuais */
+
+  /* — Variações para contraste (WCAG AA) — */
+  --color-ink-strong: #2f4049;  /* texto pequeno sobre o azul pastel (6.6:1) */
+  --color-rust-text: #9a4625;   /* laranja para texto pequeno (≥5.6:1) */
+  --color-sky-soft: #d3e3e9;
+  --color-sky-deep: #8fb1bf;
+  --color-line: rgba(70, 93, 104, 0.22);
+  --color-line-strong: rgba(70, 93, 104, 0.45);
+  --color-tape: rgba(255, 245, 207, 0.78);
+
+  /* — Papéis semânticos — */
+  --bg: var(--color-butter);
+  --surface: var(--color-paper);
+  --text: var(--color-coffee);
+  --heading: var(--color-ink);
+  --accent: var(--color-rust);
+  --focus: var(--color-rust-text);
+
+  /* — Tipografia — */
+  --font-display: 'Bodoni Moda Variable', 'Bodoni 72', Didot, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-hand: 'Caveat', 'Bradley Hand', 'Segoe Print', cursive;
+
+  /* Escala fluida: mínimo no celular, máximo em telas grandes */
+  --step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);    /* legendas, numeração */
+  --step--1: clamp(0.84rem, 0.82rem + 0.12vw, 0.92rem);  /* metadados */
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.1rem);        /* corpo */
+  --step-1: clamp(1.2rem, 1.1rem + 0.45vw, 1.45rem);     /* lead */
+  --step-2: clamp(1.5rem, 1.3rem + 0.9vw, 2.1rem);       /* h3 */
+  --step-3: clamp(2rem, 1.6rem + 1.9vw, 3.2rem);         /* h2 */
+  --step-4: clamp(2.6rem, 1.9rem + 3.4vw, 5rem);         /* títulos de projeto */
+  --step-5: clamp(3.4rem, 2.2rem + 6vw, 8.5rem);         /* capa */
+  --step-6: clamp(4rem, 2rem + 10vw, 12rem);             /* tipografia gigante */
+
+  --leading-tight: 0.92;
+  --leading-snug: 1.2;
+  --leading-body: 1.62;
+  --tracking-caps: 0.14em;
+
+  /* — Espaçamento (base 4px) — */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --section-gap: clamp(4.5rem, 3rem + 6vw, 9rem);
+
+  /* — Layout — */
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2.5rem);
+  --width-text: 38rem;
+  --width-content: 72rem;
+  --width-wide: 88rem;
+  --header-height: 3.75rem;
+
+  /* — Bordas e sombras — */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-device: 2.6rem;
+  --border-hair: 1px solid var(--color-line);
+  --shadow-paper: 0 1px 1px rgba(104, 74, 61, 0.08), 0 8px 20px -12px rgba(104, 74, 61, 0.35);
+  --shadow-lift: 0 2px 2px rgba(104, 74, 61, 0.08), 0 22px 40px -18px rgba(104, 74, 61, 0.45);
+  --shadow-device: 0 30px 60px -30px rgba(47, 64, 73, 0.6);
+
+  /* — Movimento — */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration-base: 320ms;
+  --duration-slow: 700ms;
+
+  /* — Camadas — */
+  --z-decor: 0;
+  --z-content: 1;
+  --z-float: 2;
+  --z-header: 50;
+}
+
+/* Breakpoints (referência — CSS custom properties não funcionam em @media):
+   --bp-sm: 36rem  (576px)  celular grande
+   --bp-md: 48rem  (768px)  tablet
+   --bp-lg: 64rem  (1024px) notebook
+   --bp-xl: 80rem  (1280px) desktop */
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-fast: 0ms;
+    --duration-base: 0ms;
+    --duration-slow: 0ms;
+  }
+}
