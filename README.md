@@ -15,6 +15,10 @@ npm run build      # checa tipos e gera dist/
 npm run preview    # serve o build
 ```
 
+## Publicação
+
+O site fica em **https://alanaqroz.github.io/Portifolio/**. A cada push na `main`, o workflow `.github/workflows/deploy.yml` faz o build e publica a pasta `dist/` no GitHub Pages. Em *Settings → Pages*, a fonte precisa estar como **GitHub Actions**: publicar direto da branch mostra uma página em branco, porque o navegador não executa o código-fonte em TypeScript.
+
 ## Onde editar o conteúdo
 
 | O quê | Arquivo |
