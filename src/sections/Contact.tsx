@@ -1,6 +1,6 @@
 import { publishedApps, sectionEyebrow, socialLinks } from '../content/site';
 import { Arrow } from '../components/Links';
-import { HandNote, StickyNote } from '../components/Paper';
+import { HandNote } from '../components/Paper';
 
 export function Contact() {
   return (
@@ -30,7 +30,7 @@ export function Contact() {
         </ul>
 
         <div className="contact__apps" data-reveal>
-          <StickyNote rotate={-3}>e os apps, pra baixar e testar:</StickyNote>
+          <p className="contact__apps-label">E os apps, para baixar e testar:</p>
           <ul>
             {publishedApps.map((app) => (
               <li key={app.href}>
