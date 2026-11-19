@@ -48,6 +48,10 @@ export type Project = {
   slug: string;
   number: string;
   title: string;
+  /** o que o projeto é, em poucas palavras (usado no índice da capa) */
+  category: string;
+  /** o ângulo do projeto: a frase que o diferencia dos outros */
+  headline: string;
   /** frase curta de apresentação */
   kicker: string;
   summary: string;

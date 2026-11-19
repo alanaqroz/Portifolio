@@ -76,6 +76,8 @@ export const projects: Project[] = [
     slug: 'auris',
     number: '01',
     title: 'Auris',
+    category: 'Tecnologia assistiva',
+    headline: 'Aponte a câmera para a embalagem. O Auris conta primeiro o que importa.',
     kicker: 'A câmera do iPhone como apoio na escolha de produtos menstruais, para pessoas com baixa visão.',
     summary:
       'Auris é um app que usa a câmera do iPhone e inteligência artificial para reconhecer produtos de higiene menstrual e oferecer informações gerais e específicas sobre eles, apoiando a autonomia e a segurança de pessoas com baixa visão na hora da escolha.',
@@ -187,6 +189,8 @@ Circle().frame(width: size * 55) // Cresce com o tamanho de texto do iPhone`,
     slug: 'zip-it',
     number: '02',
     title: 'Zip It',
+    category: 'App de viagem',
+    headline: 'Regras para o básico, IA para o que falta.',
     kicker: 'Listas de bagagem que consideram destino, clima, duração e tipo de viagem.',
     summary:
       'Zip It é um aplicativo de listas de bagagem feito em dupla. A partir do destino, das datas, do tipo de viagem e das atividades planejadas, ele monta uma lista personalizada, organizada por categorias e ajustável do jeito de cada pessoa.',
@@ -313,6 +317,8 @@ if abs(latitude) <= 23.5 {
     slug: 'sky-bound',
     number: '03',
     title: 'Sky Bound',
+    category: 'App pessoal',
+    headline: 'Uma semana, um projeto individual, da ideia à App Store.',
     kicker: 'Um lugar para registrar e celebrar conquistas — da ideia à App Store, de ponta a ponta.',
     summary:
       'Sky Bound é um app para registrar conquistas pessoais, grandes ou pequenas, com foto, descrição e categoria. É um projeto individual, feito em uma semana: passei pela concepção, pelo design da interface e pelo desenvolvimento até a publicação na App Store.',
@@ -413,6 +419,8 @@ if abs(latitude) <= 23.5 {
     slug: 'aegis',
     number: '04',
     title: 'AEGIS',
+    category: 'Hackathon · agentes de IA',
+    headline: 'Quatro pessoas, um hackathon. Minha parte: fazer o sistema ser entendido.',
     kicker: 'Governança regulatória com agentes de IA, construída em equipe num hackathon.',
     summary:
       'AEGIS (Autonomous Enterprise Governance Intelligence System) é uma plataforma multiagente para conformidade regulatória contínua com LGPD, GDPR e ISO 27001. Foi desenvolvida em equipe de quatro pessoas no All Things Agentic Hackathon. Meu papel foi liderar a documentação e a submissão.',
