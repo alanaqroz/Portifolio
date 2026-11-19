@@ -2,9 +2,9 @@
 
 Portfólio pessoal de **Alana Queiroz (Lana)**: estudante de Ciência da Computação na PUCPR e participante da Apple Developer Academy.
 
-> Eu penso, desenho e desenvolvo produtos digitais.
+> Desenho e programo apps para iPhone.
 
-O site é pensado como uma publicação editorial — painéis de cor, tipografia serifada de alto contraste, fotos impressas, post-its e anotações à mão — apresentando quatro projetos: **Auris**, **Zip It**, **Sky Bound** e **AEGIS**, cada um com seu estudo de caso.
+O site é pensado como uma publicação editorial — painéis de cor, tipografia serifada de alto contraste, fotos impressas e poucas anotações à mão — apresentando quatro projetos: **Auris**, **Zip It**, **Sky Bound** e **AEGIS**, cada um com seu estudo de caso.
 
 ## Rodando localmente
 

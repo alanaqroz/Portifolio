@@ -17,7 +17,7 @@ const svg = `
     <text x="170" y="200" font-family="Helvetica, Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3" fill="#465D68">CADERNO DE PRODUTO · 2026</text>
     <text x="165" y="310" font-family="Didot, 'Bodoni 72', serif" font-size="104" fill="#465D68">Alana</text>
     <text x="230" y="405" font-family="Didot, 'Bodoni 72', serif" font-style="italic" font-size="104" fill="#465D68">Queiroz</text>
-    <text x="170" y="465" font-family="Didot, 'Bodoni 72', serif" font-style="italic" font-size="26" fill="#684A3D">Eu penso, desenho e desenvolvo produtos digitais.</text>
+    <text x="170" y="465" font-family="Didot, 'Bodoni 72', serif" font-style="italic" font-size="26" fill="#684A3D">Desenho e programo apps para iPhone.</text>
   </g>
 </svg>`;
 
