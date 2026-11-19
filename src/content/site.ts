@@ -4,9 +4,12 @@ import { APP_STORE } from './projects';
 export const person = {
   name: 'Alana Queiroz',
   nickname: 'Lana',
-  tagline: 'Eu penso, desenho e desenvolvo produtos digitais.',
+  tagline: 'Desenho e programo apps para iPhone.',
+  intro:
+    'Estudo Ciência da Computação na PUCPR, faço parte da Apple Developer Academy e aprendo construindo. Dois dos meus apps já estão na App Store.',
   disciplines: ['Computer Science', 'Product Design', 'iOS Development'],
   based: 'Curitiba, PR',
+  coords: '25°25′ S · 49°16′ O',
 };
 
 /**
@@ -27,7 +30,7 @@ export const sectionNumber = (id: SectionId) =>
   String(sections.findIndex((s) => s.id === id) + 1).padStart(2, '0');
 
 export const sectionEyebrow = (id: SectionId) =>
-  `Seção ${sectionNumber(id)} · ${sections.find((s) => s.id === id)!.label}`;
+  `${sectionNumber(id)} — ${sections.find((s) => s.id === id)!.label}`;
 
 export const socialLinks: ExternalLink[] = [
   { label: 'GitHub', href: 'https://github.com/alanaqroz' },
@@ -44,7 +47,7 @@ export const about = {
   paragraphs: [
     'Sou a Lana — Alana Queiroz no papel. Estudo Ciência da Computação na PUCPR e desenvolvo produtos digitais.',
     'Sou de Marabá, no Pará. Aos 17 anos, saí de lá para morar sozinha em Curitiba e continuar meus estudos. Foi uma mudança enorme: uma cidade nova, uma rotina nova e muita coisa para descobrir por conta própria.',
-    'Hoje, entre a Ciência da Computação e a Apple Developer Academy, venho explorando jeitos de transformar ideias em produtos, passando por tecnologia, design e experiência do usuário — às vezes tudo no mesmo projeto.',
+    'Hoje divido o tempo entre a PUCPR e a Apple Developer Academy. Nos projetos, gosto de passar por mais de uma etapa — no Sky Bound, passei por todas: produto, interface, código e publicação.',
     'Este portfólio reúne um pouco desse caminho: projetos que construí, coisas que aprendi e ideias que ainda quero explorar.',
   ],
   /**
@@ -59,6 +62,33 @@ export const about = {
     distance: '≈ 2.200 km em linha reta',
   },
 };
+
+/**
+ * "Como eu trabalho": hábitos que aparecem nos projetos.
+ * Cada um aponta para o projeto que serve de prova — nada de qualidade solta.
+ */
+export const habits = [
+  {
+    title: 'Fecho o escopo antes de começar.',
+    proof: 'O Sky Bound tinha uma semana. Ficou pronto porque aceitei que não ia fazer tudo o que queria.',
+    project: 'sky-bound',
+  },
+  {
+    title: 'Publico cedo, redesenho depois.',
+    proof: 'A primeira versão do Zip It foi feita para chegar rápido à App Store. O redesign veio depois, avaliando as telas que já estavam no ar.',
+    project: 'zip-it',
+  },
+  {
+    title: 'Testo com quem vai usar.',
+    proof: 'O Auris foi validado com uma usuária com baixa visão — e com o Accessibility Inspector antes disso.',
+    project: 'auris',
+  },
+  {
+    title: 'Escrevo para quem não estava lá.',
+    proof: 'No AEGIS, minha parte foi o README, a Project Story e o roteiro do pitch: fazer quem avalia entender e reproduzir o sistema.',
+    project: 'aegis',
+  },
+] as const;
 
 export const education = [
   {

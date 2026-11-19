@@ -1,5 +1,4 @@
 import { education, sectionEyebrow, skillGroups } from '../content/site';
-import { HandNote } from '../components/Paper';
 
 export function Formation() {
   return (
@@ -32,9 +31,7 @@ export function Formation() {
               <h3 id={`skills-${i}`} className="skills__title" lang="en">
                 {group.title}
               </h3>
-              <HandNote className="skills__note" rotate={-2}>
-                {group.note}
-              </HandNote>
+              <p className="skills__note">{group.note}</p>
               <ul className="skills__list">
                 {group.items.map((item) => (
                   <li key={item.name}>

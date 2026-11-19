@@ -1,4 +1,6 @@
-import { about, sectionEyebrow } from '../content/site';
+import { about, habits, sectionEyebrow } from '../content/site';
+import { projects } from '../content/projects';
+import { Link, caseHref } from '../lib/router';
 import { HandNote, PhotoPrint } from '../components/Paper';
 
 /** Régua de meridiano: Marabá e Curitiba estão quase na mesma longitude (~49° O). */
@@ -72,6 +74,30 @@ export function About() {
           )}
           <Meridian />
         </div>
+
+        <section className="habits" aria-labelledby="habits-title">
+          <h3 id="habits-title" className="habits__title">
+            Como eu trabalho
+          </h3>
+          <p className="habits__intro">Quatro hábitos que se repetem nos meus projetos — cada um com a prova do lado.</p>
+          <ol className="habits__list">
+            {habits.map((h, i) => {
+              const project = projects.find((p) => p.slug === h.project)!;
+              return (
+                <li key={h.title} className="habit" data-reveal style={{ ['--reveal-delay' as string]: `${i * 80}ms` }}>
+                  <span className="habit__num" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p className="habit__title">{h.title}</p>
+                  <p className="habit__proof">{h.proof}</p>
+                  <Link href={caseHref(project.slug)} className="habit__link">
+                    Ver no {project.title}
+                  </Link>
+                </li>
+              );
+            })}
+          </ol>
+        </section>
       </div>
     </section>
   );

@@ -14,16 +14,6 @@ export function HandNote({ children, rotate = -3, className = '' }: { children: 
   );
 }
 
-/** Post-it amarelo com fita adesiva. */
-export function StickyNote({ children, rotate = 3, className = '' }: { children: ReactNode; className?: string } & Rotation) {
-  return (
-    <div className={`sticky-note ${className}`} style={rot(rotate)}>
-      <span className="tape" aria-hidden="true" />
-      <p>{children}</p>
-    </div>
-  );
-}
-
 /** Foto impressa com borda branca (estilo polaroid) e legenda opcional. */
 export function PhotoPrint({
   image,

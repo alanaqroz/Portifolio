@@ -72,6 +72,66 @@
   width: min(100%, 20rem);
 }
 
+.case-hero {
+  position: relative;
+}
+
+/* Nuvens do Sky Bound atravessando o topo da abertura */
+.case-hero__clouds {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* Faixa larga: sai do painel colorido e invade o corpo da página */
+.case-strip {
+  position: relative;
+  z-index: var(--z-float);
+  margin-top: var(--space-8);
+  margin-bottom: calc(-1 * var(--space-9) - var(--space-7));
+}
+
+.case-strip--wide .photo-print {
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+.case-strip--devices {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  justify-items: center;
+  gap: var(--space-5);
+}
+
+.case-strip--devices .device {
+  --device-w: clamp(8.5rem, 4rem + 9vw, 13rem);
+}
+
+.case-strip--devices .device:nth-child(even) {
+  margin-top: var(--space-7);
+}
+
+.case:has(.case-strip) .case-body {
+  padding-top: calc(var(--section-gap) + var(--space-9));
+}
+
+@media (max-width: 47.99rem) {
+  .case-strip {
+    margin-bottom: calc(-1 * var(--space-8));
+  }
+
+  .case-strip--devices {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-strip--devices .device:nth-child(n + 3) {
+    display: none;
+  }
+}
+
 .case-cover-card {
   --rotate: 2deg;
   display: grid;

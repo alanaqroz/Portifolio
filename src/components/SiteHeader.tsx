@@ -2,9 +2,37 @@ import { useEffect, useState } from 'react';
 import { sections, sectionNumber } from '../content/site';
 import { Link, homeHref, useRouter } from '../lib/router';
 
+/** Descobre qual seção da página inicial está no meio da tela. */
+function useCurrentSection(enabled: boolean) {
+  const [current, setCurrent] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!enabled || !('IntersectionObserver' in window)) {
+      setCurrent(null);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setCurrent(entry.target.id);
+        }
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    sections.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [enabled]);
+
+  return current;
+}
+
 export function SiteHeader() {
   const { caseSlug } = useRouter();
   const [open, setOpen] = useState(false);
+  const current = useCurrentSection(caseSlug === null);
 
   // Fecha o menu ao trocar de página ou apertar Esc
   useEffect(() => setOpen(false), [caseSlug]);
@@ -25,10 +53,6 @@ export function SiteHeader() {
           <span className="site-header__name">Alana Queiroz</span>
         </Link>
 
-        <p className="site-header__issue folio" aria-hidden="true">
-          Caderno de produto · Nº 01 · 2026
-        </p>
-
         <button
           type="button"
           className="site-header__toggle"
@@ -44,7 +68,11 @@ export function SiteHeader() {
           <ol>
             {sections.map((item) => (
               <li key={item.id}>
-                <Link href={homeHref(item.id)} onClick={() => setOpen(false)}>
+                <Link
+                  href={homeHref(item.id)}
+                  onClick={() => setOpen(false)}
+                  aria-current={current === item.id ? 'location' : undefined}
+                >
                   <span className="site-nav__num" aria-hidden="true">
                     {sectionNumber(item.id)}
                   </span>
