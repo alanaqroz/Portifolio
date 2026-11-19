@@ -1,39 +1,66 @@
 import type { CSSProperties } from 'react';
-import { projects } from '../content/projects';
+import { aurisImages, projects, skyboundImages, zipitImages } from '../content/projects';
 import type { Project } from '../content/types';
 import { ButtonLink, ExternalLink } from '../components/Links';
 import { DeviceFrame, EditorNote, PhotoPrint, TagList } from '../components/Paper';
 import { ChapterFigure } from '../components/Figures';
 import { caseHref, homeHref } from '../lib/router';
 
-function CaseCover({ project }: { project: Project }) {
-  if (project.slug === 'aegis') {
-    return (
-      <div className="case-cover-card" aria-hidden="true">
-        <p className="case-cover-card__stamp">Hackathon · {project.year}</p>
-        <p className="case-cover-card__laws">
-          <span>LGPD</span>
-          <span>GDPR</span>
-          <span>ISO 27001</span>
-        </p>
-        <p className="case-cover-card__note">quando a regra muda, refaz só o necessário</p>
-      </div>
-    );
-  }
-  if (!project.cover) {
-    return (
-      <DeviceFrame className="device--placeholder" rotate={-3} label={`Espaço reservado para a imagem de capa de ${project.title}`}>
-        <div className="viewfinder" aria-hidden="true">
-          <span className="viewfinder__corners" />
-          <span className="viewfinder__label">imagem de capa — a inserir</span>
+/*
+ * Cada estudo de caso abre com uma composição própria, montada com os
+ * materiais reais do projeto: o ícone, as telas, a identidade.
+ */
+function CaseSideVisual({ project }: { project: Project }) {
+  switch (project.slug) {
+    case 'auris':
+      return <PhotoPrint image={{ ...aurisImages.icon, caption: 'Auris, 2025' }} rotate={-4} loading="eager" className="case-hero__print" />;
+    case 'zip-it':
+      return <DeviceFrame image={zipitImages.listScreen} rotate={3} loading="eager" />;
+    case 'sky-bound':
+      return <PhotoPrint image={{ ...skyboundImages.icon, caption: 'Sky Bound, 2025' }} rotate={-4} tape loading="eager" className="case-hero__print" />;
+    case 'aegis':
+      return (
+        <div className="case-cover-card" aria-hidden="true">
+          <p className="case-cover-card__stamp">Hackathon · {project.year}</p>
+          <p className="case-cover-card__laws">
+            <span>LGPD</span>
+            <span>GDPR</span>
+            <span>ISO 27001</span>
+          </p>
+          <p className="case-cover-card__note">quando a regra muda, refaz só o necessário</p>
         </div>
-      </DeviceFrame>
-    );
+      );
+    default:
+      return project.cover ? <PhotoPrint image={project.cover} rotate={-3} loading="eager" /> : null;
   }
-  if (project.cover.width === project.cover.height) {
-    return <PhotoPrint image={project.cover} rotate={-4} tape loading="eager" />;
+}
+
+/** Faixa larga logo abaixo da abertura: a imagem que melhor resume o projeto. */
+function CaseStrip({ project }: { project: Project }) {
+  switch (project.slug) {
+    case 'auris':
+      return (
+        <div className="case-strip case-strip--wide">
+          <PhotoPrint image={aurisImages.bento} rotate={-0.6} loading="eager" />
+        </div>
+      );
+    case 'zip-it':
+      return (
+        <div className="case-strip case-strip--devices">
+          {zipitImages.v2.map((img, i) => (
+            <DeviceFrame key={img.src} image={img} rotate={[-3, 1.5, -1, 2.5][i]} loading="eager" />
+          ))}
+        </div>
+      );
+    case 'sky-bound':
+      return (
+        <div className="case-strip case-strip--wide">
+          <PhotoPrint image={skyboundImages.idvV2} rotate={0.6} loading="eager" />
+        </div>
+      );
+    default:
+      return null;
   }
-  return <DeviceFrame image={project.cover} rotate={3} loading="eager" />;
 }
 
 function CaseNav({ project }: { project: Project }) {
@@ -71,6 +98,9 @@ export function CaseStudyPage({ project }: { project: Project }) {
   return (
     <article className={`case case--${project.slug}`} style={style} aria-labelledby="case-title">
       <header className="case-hero">
+        {project.slug === 'sky-bound' && (
+          <img className="case-hero__clouds" src={skyboundImages.clouds.src} alt="" width={skyboundImages.clouds.width} height={skyboundImages.clouds.height} />
+        )}
         <div className="container--wide case-hero__grid">
           <div className="case-hero__text">
             <ButtonLink href={homeHref('trabalhos')} variant="text" arrow="left" className="case-hero__back">
@@ -82,12 +112,15 @@ export function CaseStudyPage({ project }: { project: Project }) {
             <h1 id="case-title" className="case-hero__title" tabIndex={-1}>
               {project.title}
             </h1>
-            <p className="case-hero__kicker">{project.kicker}</p>
+            <p className="case-hero__kicker">{project.headline}</p>
             <p className="case-hero__summary">{project.summary}</p>
           </div>
           <div className="case-hero__visual">
-            <CaseCover project={project} />
+            <CaseSideVisual project={project} />
           </div>
+        </div>
+        <div className="container--wide">
+          <CaseStrip project={project} />
         </div>
       </header>
 
